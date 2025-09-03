@@ -74,11 +74,44 @@ Student = **BUS-fed** pathway.
 ```bash
 python scripts/train_adapters.py   --dataset vqa   --teacher blip2_qa_pipeline   --student bus_pipeline   --epochs 3   --batch-size 16   --loss-weights 1.0 1.0 0.5 0.5
 ```
-Where the composite loss is:
-- `L_cycle = ||Φ_A − D(Enc(Φ_A))||²` (reconstruct A’s features)
-- `L_KD = T² * KL( softmax(y_T/T) || softmax(y_S/T) )` (logit distillation)
-- `L_hidden = ||P·h_S − h_T||²` (optional hidden alignment)
-- `L_symbolic` (supervise object/relations if using detector)
+Where the composite loss is defined as:
+
+\[
+\mathcal{L}_{\text{total}}
+= \lambda_{\text{cycle}} \, \mathcal{L}_{\text{cycle}}
++ \lambda_{\text{KD}} \, \mathcal{L}_{\text{KD}}
++ \lambda_{\text{hidden}} \, \mathcal{L}_{\text{hidden}}
++ \lambda_{\text{sym}} \, \mathcal{L}_{\text{symbolic}}
+\]
+
+- **Cycle Consistency**  
+\[
+\mathcal{L}_{\text{cycle}}
+= \left\| \, \Phi_A(x) - D(Enc(\Phi_A(x))) \, \right\|_2^2
+\]
+
+- **Knowledge Distillation (logits)**  
+\[
+\mathcal{L}_{\text{KD}}
+= T^2 \cdot \mathrm{KL}\!\Big(
+    \sigma\!\left(\tfrac{y_T}{T}\right)
+    \,\big\|\, 
+    \sigma\!\left(\tfrac{y_S}{T}\right)
+\Big)
+\]
+
+- **Hidden-State Alignment (optional)**  
+\[
+\mathcal{L}_{\text{hidden}}
+= \left\| \, P \cdot h_S - h_T \, \right\|_2^2
+\]
+
+- **Symbolic Supervision (optional)**  
+\[
+\mathcal{L}_{\text{symbolic}}
+= - \sum_{(o, r, o')} \log p_{\theta}(o, r, o' \mid x)
+\]
+
 
 ### 4) Evaluate
 ```bash
