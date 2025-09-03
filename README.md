@@ -3,7 +3,7 @@
 
 > **Elevator pitch:** A plug‑and‑play **neural BUS** (schema + adapters + router) that lets one AI model (e.g., Vision) transfer usable internal state to another (e.g., Language), **distilled** to be compact and task‑preserving — like brain regions exchanging signals.
 
-![Neural BUS Diagram](assets/neural-bus-diagram.png)
+![Neural BUS Diagram](assets/system-design-demo.png)
 
 ## Why this matters
 Today, models talk through **lossy text only** (captions, transcripts). The Neural BUS standardizes a **richer, measured** hand‑off (symbolic triples, embeddings, optional tensors) with **knowledge distillation** so the receiving model performs nearly as well as if it had the original input.
