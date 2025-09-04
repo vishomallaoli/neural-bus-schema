@@ -30,10 +30,13 @@ Neural-BUS/
 │   ├── vision_encoder.py        # ResNet/ViT feature extractor
 │   ├── captioner.py             # BLIP / detector for text+symbolic
 │   ├── llm_decoder.py           # LLM wrapper (Mistral/Llama etc.)
-│   └── adapters.py              # EncoderAdapter & DecoderAdapter
+│   └── adapters/                # EncoderAdapter & DecoderAdapter
+│       ├── encoder.py
+│       └── decoder.py
 ├── bus/
 │   ├── schema.py                # BUS packet definition (JSON/Proto)
-│   └── router.py                # simple A→B routing
+│   ├── router.py                # simple A→B routing
+│   └── compression.py           # optional: packet compression/ quantization
 ├── eval/
 │   ├── cycle_consistency.py     # cosine/MSE/SSIM
 │   ├── task_transfer.py         # VQA accuracy vs baselines
@@ -43,6 +46,14 @@ Neural-BUS/
 │   ├── run_pipeline.py          # end‑to‑end demo
 │   ├── train_adapters.py        # distillation + cycle losses
 │   └── evaluate.py              # collects and prints metrics
+├── training/
+│   ├── losses.py                # cycle, distillation, alignment losses
+│   ├── trainer.py               # main training loop
+│   └── optimization.py          # schedulers, optimizers
+├── utils/
+│   ├── visuzliation.py          # plot embeddings, attention maps
+│   ├── logging.py               # structured logging utilities
+│   └── checkpoints.py           # model saving/loading
 └── results/
     ├── logs/
     ├── metrics.json
