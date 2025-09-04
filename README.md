@@ -202,7 +202,7 @@ This prints:
 - PR checklist: docs updated • unit test for new adapter • smoke test passes.
 
 ## License
-MIT — please cite if you use this in academic work.
+MIT — Academic Senior Year 2025 Project @ Ole Miss
 
 ## Citation
 ```
@@ -210,6 +210,6 @@ MIT — please cite if you use this in academic work.
   title  = {Neural BUS: Distilled Model-to-Model Communication},
   author = {Visho Malla Oli},
   year   = {2025},
-  url    = {https://github.com/<your-username>/Neural-BUS}
+  url    = {https://github.com/vishomallaoli/neural-bus-schema}
 }
 ```
