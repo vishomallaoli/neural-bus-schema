@@ -24,6 +24,7 @@ Neural-BUS/
 ├── README.md
 ├── requirements.txt
 ├── config.yaml
+├── assets/                     # stock images
 ├── data/
 │   ├── vqa_dataset.py           # VQA / COCO loader
 │   └── transforms.py            # image preprocessing
