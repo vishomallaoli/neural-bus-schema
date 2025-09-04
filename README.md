@@ -18,6 +18,7 @@ Today, models talk through **lossy text only** (captions, transcripts). The Neur
 ---
 
 ## Repo structure
+### Distillation Pipeline Architecture Repo
 ```
 Neural-BUS/
 ├── README.md
@@ -54,12 +55,38 @@ Neural-BUS/
 │   ├── visuzliation.py          # plot embeddings, attention maps
 │   ├── logging.py               # structured logging utilities
 │   └── checkpoints.py           # model saving/loading
-└── results/
+├── results/
     ├── logs/
     ├── metrics.json
     └── figures/
+└── webapp/
 ```
 
+### Demo Frontend/Backend Repo
+```
+webapp/                     
+├── backend/                 
+│   ├── app.py               # FastAPI/Flask main application
+│   ├── api/
+│   │   ├── routes.py        # API endpoints (/process, /metrics, etc.)
+│   │   └── models.py        # Pydantic models for requests/responses
+│   ├── services/
+│   │   ├── pipeline.py      # Neural-BUS pipeline wrapper
+│   │   ├── image_handler.py # Image upload/processing
+│   │   └── metrics.py       # Real-time metric calculation
+│   └── config.py            # Backend configuration
+├── frontend/
+│   ├── public/
+│   │   ├── index.html       # Your demo interface
+│   │   ├── style.css        # Styling (or embed in HTML)
+│   │   └── script.js        # Frontend logic
+│   └── assets/              # Images, icons, etc.
+├── docker/
+│   ├── Dockerfile.backend   # Backend containerization
+│   ├── Dockerfile.frontend  # Frontend containerization  
+│   └── docker-compose.yml   # Full stack deployment
+└── requirements-web.txt     # Web-specific dependencies
+```
 ---
 
 ## Quickstart
