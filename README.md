@@ -57,9 +57,9 @@ Neural-BUS/
 │   ├── logging.py               # structured logging utilities
 │   └── checkpoints.py           # model saving/loading
 ├── results/
-    ├── logs/
-    ├── metrics.json
-    └── figures/
+│   ├── logs/
+│   ├── metrics.json
+│   └── figures/
 └── webapp/
 ```
 
